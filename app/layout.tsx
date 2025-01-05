@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import "@radix-ui/themes/styles.css";
+import "./theme-config.css";
 import "./globals.css";
-
+import { Container, Theme } from "@radix-ui/themes";
+import AuthProvider from "./auth/Provider";
+import QueryClientProvider from "./QueryClientProvider";
+import Navbar from "@/components/global/Navbar";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -27,7 +32,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <QueryClientProvider>
+          <AuthProvider>
+            <Theme accentColor="violet">
+              <Navbar />
+              <main className="p-5">
+                <Container>{children}</Container>
+              </main>
+            </Theme>
+          </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
