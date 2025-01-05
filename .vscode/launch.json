@@ -18,13 +18,6 @@
         "type": "firefox",
         "request": "launch",
         "url": "http://localhost:3000",
-        "reAttach": true,
-        "pathMappings": [
-          {
-            "url": "webpack://_N_E",
-            "path": "${workspaceFolder}"
-          }
-        ]
       },
       {
         "name": "Next.js: debug full stack",
