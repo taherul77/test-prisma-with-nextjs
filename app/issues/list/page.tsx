@@ -33,7 +33,7 @@ const IssuesPage = async ({ searchParams }: Props) => {
   const orderBy = { [plainSearchParams.orderBy]: SortOrder.asc };
 
   const page = parseInt(plainSearchParams.page) || 1;
-  const pageSize = 10;
+  const pageSize = 2;
 
   const issues = await prisma.issue.findMany({
     where,
@@ -42,7 +42,12 @@ const IssuesPage = async ({ searchParams }: Props) => {
     take: pageSize,
   });
 
+  console.log(issues);
+  
+
   const issueCount = await prisma.issue.count({ where });
+ 
+  
 
   return (
     <Flex direction="column" gap="3">
